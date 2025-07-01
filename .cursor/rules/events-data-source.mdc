@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Events Data Source Rule
+
+## Primary Data Source Requirement
+
+**ALWAYS** use [public/events.json](mdc:public/events.json) as the primary data source for events in this Nürnberg Digital Festival Events App.
+
+## Critical Guidelines
+
+### Data Fetching
+- When fetching events in [src/App.js](mdc:src/App.js), always use: `fetch('/events.json')`
+- Never use any other event data files like `sample-events.json` or similar
+- The events.json file is located in the `public/` directory and contains the official Nürnberg Digital Festival 2025 events
+
+### Event Data Structure
+Events in [public/events.json](mdc:public/events.json) should have these required fields:
+- `image`: Event image URL
+- `title`: Event title
+- `short_description`: Brief event description  
+- `event_date_time`: German format "DD.MM.YYYY HH:MM - HH:MM Uhr"
+- `website`: Official event website URL
+- `organizer`: Event organizer name
+- `location`: Event location/venue
+
+### Event Categories
+The app automatically detects event categories based on content analysis:
+- Tech Conference (blue - #1976d2)
+- Music Festival (purple - #9c27b0)
+- Art Exhibition (orange - #f57c00)
+- Food Fair (green - #388e3c)
+- Workshop (red - #d32f2f)
+- Networking (purple - #7b1fa2)
+
+### UI Implementation
+- Use the horizontal card layout in [src/EventCard.js](mdc:src/EventCard.js) with image on left, content on right
+- Implement date tab system (Today, Tomorrow, Oct 25, Oct 26) as shown in [src/App.js](mdc:src/App.js)
+- Follow the Material Design 3 theme defined in [src/theme.js](mdc:src/theme.js)
+- Ensure mobile-first responsive design with `maxWidth="sm"` containers
+
+### Performance Considerations
+- Limit events displayed to prevent performance issues (slice(0, 20) for demo)
+- Use proper loading states and error handling
+- Implement hover effects for better user interaction
+
+This rule ensures consistency and prevents accidental use of test/sample data files in the production application.

@@ -1,0 +1,48 @@
+# Cursor Rules for Nürnberg Digital Festival Events App
+
+## Data Source Requirements
+- **ALWAYS** use `/events.json` as the primary data source for events
+- Never use `/sample-events.json` or any other event data files in production code
+- When fetching events, always use: `fetch('/events.json')`
+- The events.json file is located in the `public/` directory
+
+## Project Structure
+- This is a React app using Material-UI (MUI) for components
+- Use the custom Material Design 3 theme defined in `src/theme.js`
+- Follow the mobile-first design pattern established in the current layout
+
+## Code Style Guidelines
+- Always use ES6+ features (const, let, arrow functions, destructuring)
+- Use React hooks (useState, useEffect, useCallback) appropriately
+- Fix ESLint warnings immediately when they appear
+- Remove unused imports and variables
+- Use meaningful variable and function names
+
+## Event Data Structure
+- Events should have these fields: image, title, short_description, event_date_time, website, organizer, location
+- Event categories are auto-detected: Tech Conference, Music Festival, Art Exhibition, Food Fair, Workshop, Networking
+- Date format follows German convention: "DD.MM.YYYY HH:MM - HH:MM Uhr"
+
+## UI/UX Requirements
+- Maintain the horizontal card layout with image on left, content on right
+- Use the date tab system (Today, Tomorrow, Oct 25, Oct 26)
+- Keep the clean, minimal design with appropriate spacing
+- Ensure mobile responsiveness with `maxWidth="sm"` containers
+- Use category-specific colors for event chips
+
+## Dependencies
+- React 19.1.0
+- Material-UI 7.2.0
+- Emotion for styling
+- Keep packages updated to latest versions
+
+## Performance
+- Limit events displayed to prevent performance issues (slice(0, 20) for demo)
+- Use proper loading states and error handling
+- Implement hover effects for better user interaction
+
+## File Organization
+- Components in `src/` directory
+- Event data in `public/events.json`
+- Theme configuration in `src/theme.js`
+- Keep the project structure clean and organized 
