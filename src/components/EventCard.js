@@ -32,20 +32,6 @@ const EventCard = ({ event }) => {
     return dateTimeStr;
   };
 
-  // Clean up description text
-  const cleanDescription = (text) => {
-    if (!text) return '';
-    // Remove extra organization names and clean up text
-    let cleaned = text.replace(/^[^A-Za-z]*/, '');
-    // Remove organizer name duplicates
-    if (event.organizer) {
-      cleaned = cleaned.replace(new RegExp(event.organizer, 'gi'), '');
-    }
-    // Clean up and truncate
-    cleaned = cleaned.substring(0, 120);
-    return cleaned + (text.length > 120 ? '...' : '');
-  };
-
   // Get category color
   const getCategoryColor = (category) => {
     switch (category) {
@@ -192,14 +178,10 @@ const EventCard = ({ event }) => {
               sx={{ 
                 fontSize: '0.8rem',
                 lineHeight: 1.3,
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
                 mt: 0.5,
               }}
             >
-              {cleanDescription(event.short_description)}
+              {event.short_description}
             </Typography>
           )}
         </Stack>
